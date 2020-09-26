@@ -1,0 +1,10 @@
+{
+    "type": "mysql",
+    "host": "mysql-5704.dinaserver.com",
+    "port": 3306,
+    "username": "angularshop",
+    "password": "72727272",
+    "database": "angularshop",
+    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "synchronize": true
+  }

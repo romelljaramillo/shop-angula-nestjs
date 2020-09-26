@@ -13,7 +13,7 @@ import { LangModule } from './modules/lang/lang.module';
 import { ProductModule } from './modules/product/product.module';
 
 
-@Module({
+@Module({ 
   imports: [
     DatabaseModule,
     ConfigModule,

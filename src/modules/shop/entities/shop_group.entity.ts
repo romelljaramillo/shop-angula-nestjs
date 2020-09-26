@@ -2,19 +2,19 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { Datecolumn } from "../../../database/entities/datecolumn";
 
 @Entity()
-export class Shop extends Datecolumn {
-
-    @Column({ type: 'int', nullable: false })
-    id_shop_group: number;
+export class ShopGroup extends Datecolumn {
 
     @Column({ type: 'varchar', length: 64, nullable: false })
     name: string;
 
-    @Column({ type: 'int', nullable: false })
-    id_category: number;
+    @Column({ nullable: false })
+    share_customer: boolean;
 
-    @Column({ type: 'varchar', length: 255, nullable: false })
-    theme_name: string;
+    @Column({ nullable: false })
+    share_order: boolean;
+
+    @Column({ nullable: false })
+    share_stock: boolean;
 
     @Column({ nullable: false })
     active: boolean;
