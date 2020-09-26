@@ -7,6 +7,9 @@ import { ConfigModule } from './config/config.module';
 
 import { UsersModule } from './modules/users/users.module';
 import { LoginModule } from './modules/login/login.module';
+import { ProfileModule } from './modules/profile/profile.module';
+import { ShopModule } from './modules/shop/shop.module';
+import { LangModule } from './modules/lang/lang.module';
 
 
 @Module({
@@ -15,6 +18,9 @@ import { LoginModule } from './modules/login/login.module';
     ConfigModule,
     UsersModule,
     LoginModule,
+    ProfileModule,
+    ShopModule,
+    LangModule,
   ],
   controllers: [AppController],
   providers: [AppService, ConfigService],

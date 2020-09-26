@@ -1,17 +1,26 @@
-import { Body, Controller, Request, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
+import { Controller, Body, Request, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { UserDto } from './dto/user.dto';
-import { User } from './user.entity';
+import { User } from './entities/user.entity';
 import { UsersService } from './users.service';
 
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly usersService: UsersService) { }
 
   @Post()
   create(@Body() userDto: UserDto): Promise<User> {
-    return this.usersService.create(userDto);
+    const user = new User();
+
+    const { firstname, lastname, username, email, password } = userDto;
+    user.firstname = firstname;
+    user.lastname = (lastname) ? lastname : "";
+    user.username = username;
+    user.email = email;
+    user.password = password;
+
+    return this.usersService.create(user);
   }
 
   @UseGuards(JwtAuthGuard)
