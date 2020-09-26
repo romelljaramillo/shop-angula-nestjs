@@ -1,10 +1,9 @@
 import { User } from "../../users/entities/user.entity";
-import { Column, PrimaryGeneratedColumn, OneToOne } from "typeorm";
+import { Column, PrimaryGeneratedColumn, OneToOne, Entity } from "typeorm";
 import { Datecolumn } from "../../../database/entities/datecolumn";
 
+@Entity()
 export class Lang extends Datecolumn {
-    @PrimaryGeneratedColumn('increment')
-    id: number;
 
     @Column({ type: 'varchar', length: 32, nullable: false })
     name: string;

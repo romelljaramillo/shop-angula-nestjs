@@ -10,6 +10,7 @@ import { LoginModule } from './modules/login/login.module';
 import { ProfileModule } from './modules/profile/profile.module';
 import { ShopModule } from './modules/shop/shop.module';
 import { LangModule } from './modules/lang/lang.module';
+import { ProductModule } from './modules/product/product.module';
 
 
 @Module({
@@ -21,6 +22,7 @@ import { LangModule } from './modules/lang/lang.module';
     ProfileModule,
     ShopModule,
     LangModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService, ConfigService],
