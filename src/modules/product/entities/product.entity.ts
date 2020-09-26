@@ -1,8 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from "typeorm";
-import { Profile } from "../../profile/entities/profile.entity";
-import { Lang } from "../../lang/entities/lang.entity";
 import { Datecolumn } from "../../../database/entities/datecolumn";
-import { Shop } from "src/modules/shop/entities/shop.entity";
+import { Shop } from "../../shop/entities/shop.entity";
 
 @Entity()
 export class Product extends Datecolumn {

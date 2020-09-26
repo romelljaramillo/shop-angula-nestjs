@@ -1,7 +1,7 @@
 import { Entity, Column, OneToOne, JoinColumn } from "typeorm";
 import { Lang } from "../../lang/entities/lang.entity";
 import { Datecolumn } from "../../../database/entities/datecolumn";
-import { Shop } from "src/modules/shop/entities/shop.entity";
+import { Shop } from "../../shop/entities/shop.entity";
 import { Product } from './product.entity';
 
 @Entity()

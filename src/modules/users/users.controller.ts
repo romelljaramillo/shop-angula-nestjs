@@ -13,12 +13,14 @@ export class UsersController {
   create(@Body() userDto: UserDto): Promise<User> {
     const user = new User();
 
-    const { firstname, lastname, username, email, password } = userDto;
+    const { firstname, lastname, username, email, password/*, last_password_gen*/ } = userDto;
+
     user.firstname = firstname;
     user.lastname = (lastname) ? lastname : "";
     user.username = username;
     user.email = email;
     user.password = password;
+   // user.last_password_gen = (last_password_gen) ? last_password_gen : new Date();
 
     return this.usersService.create(user);
   }

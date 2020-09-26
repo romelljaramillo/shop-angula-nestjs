@@ -31,7 +31,7 @@ export class User extends Datecolumn {
   @Column({ type: 'varchar', nullable: false })
   password: string;
 
-  @Column({ type: 'timestamp', nullable: false, default: () => 'CURRENT_TIMESTAMP' })
+ /* @Column({ type: 'timestamp', nullable: true, default: 'CURRENT_TIMESTAMP' })
   last_password_gen: Date;
 
   @Column({ type: 'date', nullable: true })
@@ -92,6 +92,6 @@ export class User extends Datecolumn {
   reset_password_token: string;
 
   @Column({ type: 'datetime', nullable: true })
-  reset_password_validity: Date;
+  reset_password_validity: Date;*/
 
 }

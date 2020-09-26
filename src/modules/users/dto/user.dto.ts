@@ -4,4 +4,5 @@ export class UserDto {
   username: string;
   email: string;
   password: string;
+  // last_password_gen?: Date
 }
