@@ -5,24 +5,24 @@ import { ConfigService } from './config/config.service';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from './config/config.module';
 
-import { UsersModule } from './modules/users/users.module';
-import { LoginModule } from './modules/login/login.module';
-import { ProfileModule } from './modules/profile/profile.module';
-import { ShopModule } from './modules/shop/shop.module';
-import { LangModule } from './modules/lang/lang.module';
-import { ProductModule } from './modules/product/product.module';
+// import { UsersModule } from './modules/users/users.module';
+// import { LoginModule } from './modules/login/login.module';
+// import { ProfileModule } from './modules/profile/profile.module';
+// import { ShopModule } from './modules/shop/shop.module';
+// import { LangModule } from './modules/lang/lang.module';
+// import { ProductModule } from './modules/product/product.module';
 
 
 @Module({
   imports: [
     DatabaseModule,
     ConfigModule,
-    UsersModule,
-    LoginModule,
+    // UsersModule,
+    /* LoginModule,
     ProfileModule,
     ShopModule,
     LangModule,
-    ProductModule,
+    ProductModule, */
   ],
   controllers: [AppController],
   providers: [AppService, ConfigService],
