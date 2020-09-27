@@ -11,6 +11,8 @@ import { ConfigModule } from './config/config.module';
 // import { ShopModule } from './modules/shop/shop.module';
 // import { LangModule } from './modules/lang/lang.module';
 // import { ProductModule } from './modules/product/product.module';
+// const mod = import('./modules/users/users.module').then(m => m.UsersModule);
+// mod.then(data=>data);
 
 
 @Module({
