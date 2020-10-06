@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
 import { Profile } from "../../profile/entities/profile.entity";
 import { Lang } from "../../lang/entities/lang.entity";
 import { Datecolumn } from "../../../database/entities/datecolumn";

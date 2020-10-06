@@ -1,17 +1,19 @@
 import { Controller, Body, Request, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import * as bcrypt from 'bcrypt'
+
 import { UserDto } from './dto/user.dto';
 import { User } from './entities/user.entity';
 import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
-  constructor(private readonly usersService: UsersService) { 
-    console.log('prueba de carga');
+  constructor(
+    private readonly usersService: UsersService) { 
   }
 
   @Post()
-  create(@Body() userDto: UserDto): Promise<User> {
+  async create(@Body() userDto: UserDto): Promise<User> {
     const user = new User();
 
     const { firstname, lastname, username, email, password } = userDto;
@@ -19,7 +21,9 @@ export class UsersController {
     user.lastname = (lastname) ? lastname : "";
     user.username = username;
     user.email = email;
-    user.password = password;
+    // Encript password
+    const salt = bcrypt.genSaltSync()
+    user.password = await bcrypt.hash(password, salt);
 
     return this.usersService.create(user);
   }

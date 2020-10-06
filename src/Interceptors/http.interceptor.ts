@@ -18,8 +18,11 @@ export class httpInterceptor implements NestInterceptor {
         console.log('query: ', request.query);
 
 
-        // const mod = import('./modules/users/users.module').then(m => m.UsersModule);
-        // mod.then(data=>data);
+        // async function load() {
+        //     let modul = await import('../modules/users/users.module').then(m => m.UsersModule);
+        //     console.log(modul);
+        // }
+        // load();
 
         const now = Date.now();
         return next
