@@ -8,11 +8,11 @@ export class User extends Datecolumn {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @OneToOne(type => Lang, lang => lang.user) // specify inverse side as a second parameter
+  @OneToOne(type => Lang) // specify inverse side as a second parameter
   @JoinColumn()
   lang: Lang;
-  
-  @OneToOne(type => Profile, profile => profile.user) // specify inverse side as a second parameter
+
+  @OneToOne(type => Profile) // specify inverse side as a second parameter
   @JoinColumn()
   profile: Profile;
 

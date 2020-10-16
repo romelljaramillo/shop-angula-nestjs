@@ -1,5 +1,4 @@
-import { User } from "../../users/entities/user.entity";
-import { Column, PrimaryGeneratedColumn, OneToOne, Entity } from "typeorm";
+import { Column, Entity } from "typeorm";
 import { Datecolumn } from "../../../database/entities/datecolumn";
 
 @Entity()
@@ -28,8 +27,5 @@ export class Lang extends Datecolumn {
 
     @Column({ default: true })
     is_rtl: boolean;
-
-    @OneToOne(type => User, user => user.lang) // specify inverse side as a second parameter
-    user: User;
 
 }

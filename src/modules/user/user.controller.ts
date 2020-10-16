@@ -4,12 +4,12 @@ import * as bcrypt from 'bcrypt'
 
 import { UserDto } from './dto/user.dto';
 import { User } from './entities/user.entity';
-import { UsersService } from './users.service';
+import { UserService } from './user.service';
 
-@Controller('users')
-export class UsersController {
+@Controller('user')
+export class UserController {
   constructor(
-    private readonly usersService: UsersService) { 
+    private readonly usersService: UserService) {
   }
 
   @Post()
