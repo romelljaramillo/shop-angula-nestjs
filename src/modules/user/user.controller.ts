@@ -6,6 +6,7 @@ import { UserDto } from './dto/user.dto';
 import { User } from './entities/user.entity';
 import { UserService } from './user.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UserController {
   constructor(
@@ -15,20 +16,16 @@ export class UserController {
   @Post()
   async create(@Body() userDto: UserDto): Promise<User> {
     const user = new User();
-
     const { firstname, lastname, username, email, password } = userDto;
     user.firstname = firstname;
     user.lastname = (lastname) ? lastname : "";
     user.username = username;
     user.email = email;
-    // Encript password
     const salt = bcrypt.genSaltSync()
     user.password = await bcrypt.hash(password, salt);
-
     return this.usersService.create(user);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('/profile')
   getProfile(@Request() req) {
     return req.user;
@@ -48,6 +45,4 @@ export class UserController {
   remove(@Param('id') id: string): Promise<void> {
     return this.usersService.remove(id);
   }
-
-
 }
