@@ -1,5 +1,5 @@
 import { Controller, Body, Request, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../login/auth/guards/jwt-auth.guard';
 import * as bcrypt from 'bcrypt'
 
 import { UserDto } from './dto/user.dto';

@@ -17,10 +17,6 @@ async function bootstrap() {
   // validation DTO aplication full - lib class-validator
   app.useGlobalPipes(new ValidationPipe());
 
-  // const mod = import('./modules/users/users.module').then(m => m.UsersModule);
-  // mod.then(data => console.log(data));
-
-
   // app.setGlobalPrefix('api');
   await app.listen(AppModule.port);
   console.log(`Application is running on: ${await app.getUrl()}`);

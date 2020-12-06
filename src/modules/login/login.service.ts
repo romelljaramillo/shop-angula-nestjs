@@ -4,7 +4,6 @@ import * as bcrypt from 'bcrypt'
 
 import { UserService } from '../user/user.service';
 
-
 @Injectable()
 export class LoginService {
     constructor(
@@ -14,14 +13,13 @@ export class LoginService {
 
     async validateUser(username: string, pass: string): Promise<any> {
         const user = await this.usersService.findOne(username);
-        console.log(user);
-
         const isPasswordMatching = await bcrypt.compare(pass, user.password);
-        // if (user && user.password === pass) {
+
         if (isPasswordMatching) {
             const { password, ...result } = user;
             return result;
         }
+
         return null;
     }
 
@@ -32,6 +30,7 @@ export class LoginService {
             firstname: user.firstname,
             lastname: user.lastname
         };
+
         return {
             ok: true,
             access_token: this.jwtService.sign(payload)
