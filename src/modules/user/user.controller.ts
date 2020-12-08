@@ -1,48 +1,50 @@
 import { Controller, Body, Request, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../login/auth/guards/jwt-auth.guard';
-import * as bcrypt from 'bcrypt'
+// import { JwtAuthGuard } from '../login/auth/guards/jwt-auth.guard';
+import { ModuleController } from '../module.controller';
 
-import { UserDto } from './dto/user.dto';
+import { CreateUserDto } from './dto/CreateUser.dto';
 import { User } from './entities/user.entity';
 import { UserService } from './user.service';
 
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 @Controller('user')
-export class UserController {
+export class UserController extends ModuleController{
   constructor(
-    private readonly usersService: UserService) {
+    private readonly usersService: UserService
+  ) {
+    super(usersService);
+    this.nameModule = 'user';
+    this.entity = User;
+    this.createDto = CreateUserDto;
   }
 
-  @Post()
-  async create(@Body() userDto: UserDto): Promise<User> {
-    const user = new User();
-    const { firstname, lastname, username, email, password } = userDto;
-    user.firstname = firstname;
-    user.lastname = (lastname) ? lastname : "";
-    user.username = username;
-    user.email = email;
-    const salt = bcrypt.genSaltSync()
-    user.password = await bcrypt.hash(password, salt);
-    return this.usersService.create(user);
-  }
+  // @Post()
+  // create(@Body() createUserDto: CreateUserDto): Promise<User> {
+  //   return this.usersService.create(createUserDto);
+  // }
 
-  @Get('/profile')
+  // @Get()
+  // findAll(): Promise<User[]> {
+  //   return this.usersService.findAll();
+  // }
+
+  @Get('profile')
   getProfile(@Request() req) {
     return req.user;
   }
 
-  @Get()
-  findAll(): Promise<User[]> {
-    return this.usersService.findAll();
+  // @Get(':id')
+  // findOneId(@Param('id') id: string): Promise<User> {
+  //   return this.usersService.findOneId(id);
+  // }
+
+  @Get('username/:username')
+  findOneName(@Param('username') username: string): Promise<User> {
+    return this.usersService.findOne(username);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string): Promise<User> {
-    return this.usersService.findOneId(id);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
-    return this.usersService.remove(id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string): Promise<void> {
+  //   return this.usersService.remove(id);
+  // }
 }

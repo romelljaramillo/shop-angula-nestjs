@@ -11,11 +11,11 @@ export class httpInterceptor implements NestInterceptor {
 
         // console.log('request: ', request);
         // console.log('url: ', request.url);
-        console.log('Method: ', request.method);
+        // console.log('Method: ', request.method);
         // console.log('headers: ', request.headers);
-        console.log('ip: ', request.ip);
-        console.log('path: ', request.path);
-        console.log('query: ', request.query);
+        // console.log('ip: ', request.ip);
+        // console.log('path: ', request.path);
+        // console.log('query: ', request.query);
 
 
         // async function load() {
