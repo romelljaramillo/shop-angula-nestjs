@@ -15,13 +15,13 @@ export class LangService {
   async create(createLangDto: CreateLangDto): Promise<any> {
 
     const lang = new Lang();
+
     const { 
       name, active, iso_code, language_code,
       locale, date_format_lite, date_format_full, 
       is_rtl 
     } = createLangDto;
     
-    lang
     lang.name             = name;
     lang.active           = (active) ? active : false;
     lang.iso_code         = iso_code;
