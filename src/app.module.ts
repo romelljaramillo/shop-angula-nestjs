@@ -8,6 +8,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { ShopModule } from './modules/shop/shop.module';
 import { LangModule } from './modules/lang/lang.module';
 import { ProductModule } from './modules/product/product.module';
+import { ConfigurationModule } from './core/configuration/configuration.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { ProductModule } from './modules/product/product.module';
     ShopModule,
     LangModule,
     ProductModule,
+    ConfigurationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

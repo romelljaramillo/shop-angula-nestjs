@@ -1,34 +1,17 @@
 import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { ModuleController } from '../../core/module.controller';
+import { Lang } from './entities/lang.entity';
 import { LangService } from './lang.service';
 import { CreateLangDto } from './dto/create-lang.dto';
-import { UpdateLangDto } from './dto/update-lang.dto';
 
 @Controller('lang')
-export class LangController {
-  constructor(private readonly langService: LangService) {}
-  
-  @Post()
-  create(@Body() createLangDto: CreateLangDto) {
-    return this.langService.create(createLangDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.langService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.langService.findOne(+id);
-  }
-
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateLangDto: UpdateLangDto) {
-    return this.langService.update(+id, updateLangDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.langService.remove(+id);
-  }
+export class LangController extends ModuleController {
+  constructor(
+    private readonly langService: LangService
+    ) {
+      super(langService);
+      this.nameModule = 'lang';
+      this.entity = Lang;
+      this.createDto = CreateLangDto;
+    }
 }

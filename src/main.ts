@@ -1,7 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
 import { ContextIdFactory, NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { httpInterceptor } from './Interceptors/http.interceptor';
+import { httpInterceptor } from './core/Interceptors/http.interceptor';
 import { ProfileGuard } from './modules/profile/guards/profile.guard';
 
 async function bootstrap() {

@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Post, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from './login/auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../modules/login/auth/guards/jwt-auth.guard';
 
 // async function load() {
 //     let modul = await import('./modules/user/user.module').then(m => m.UserModule);
