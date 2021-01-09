@@ -26,7 +26,7 @@ export class LoginService {
     async login(user: any) {
         const payload = {
             username: user.username,
-            sub: user.id,
+            // sub: user.id,
             firstname: user.firstname,
             lastname: user.lastname
         };

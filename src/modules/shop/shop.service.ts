@@ -1,11 +1,44 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateShopDto } from './dto/create-shop.dto';
 import { UpdateShopDto } from './dto/update-shop.dto';
+import { Shop } from './entities/shop.entity';
 
 @Injectable()
 export class ShopService {
-  create(createShopDto: CreateShopDto) {
-    return 'This action adds a new shop';
+
+  constructor(
+    @InjectRepository(Shop)
+    private readonly shopsRepository: Repository<Shop>,
+  ) { }
+
+  async create(createShopDto: CreateShopDto): Promise<any> {
+    const shop = new Shop();
+    shop.name = createShopDto.name;
+    shop.shopGroup = createShopDto.shopGroupId;
+    shop.categoryId = createShopDto.categoryId;
+    shop.theme_name = createShopDto.name;
+    shop.active = createShopDto.active;
+    shop.deleted = createShopDto.deleted;
+
+    return this.shopsRepository.save(shop)
+      .catch(err => {
+
+        let message: string;
+
+        if (err.code === "ER_DUP_ENTRY") {
+          message = `Duplicate entry`;
+        } else {
+          message = err.message;
+        }
+
+        return {
+          statusCode: 400,
+          message: [message],
+          error: `Bad Request`
+        };
+      });
   }
 
   findAll() {

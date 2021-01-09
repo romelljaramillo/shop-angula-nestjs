@@ -10,7 +10,7 @@ export class Shop extends Datecolumn {
 
     @OneToOne(type => ShopGroup) // specify inverse side as a second parameter
     @JoinColumn()
-    ShopGroup: ShopGroup;
+    shopGroup: ShopGroup;
 
     @Column({ type: 'int', nullable: false })
     categoryId: number;

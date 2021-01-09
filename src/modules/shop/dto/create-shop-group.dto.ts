@@ -1,18 +1,17 @@
 import { IsNotEmpty } from "class-validator";
-import { ShopGroup } from "../entities/shop_group.entity";
 
-export class CreateShopDto {
+export class CreateShopGroupDto {
     @IsNotEmpty()
     name: string;
 
     @IsNotEmpty()
-    shopGroupId: ShopGroup;
+    share_customer: boolean;
 
     @IsNotEmpty()
-    categoryId: number;
+    share_order: boolean;
 
     @IsNotEmpty()
-    theme_name: string;
+    share_stock: boolean;
 
     @IsNotEmpty()
     active: boolean;
