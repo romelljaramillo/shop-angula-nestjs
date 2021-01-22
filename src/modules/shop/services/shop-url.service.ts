@@ -1,28 +1,29 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateShopDto } from './dto/create-shop.dto';
-import { UpdateShopDto } from './dto/update-shop.dto';
-import { Shop } from './entities/shop.entity';
+import { CreateShopUrlDto } from '../dto/create-shop-url.dto';
+import { UpdateShopDto } from '../dto/update-shop.dto';
+import { ShopUrl } from '../entities/shop-url.entity';
 
 @Injectable()
-export class ShopService {
+export class ShopUrlService {
 
   constructor(
-    @InjectRepository(Shop)
-    private readonly shopsRepository: Repository<Shop>,
+    @InjectRepository(ShopUrl)
+    private readonly shopsRepository: Repository<ShopUrl>
   ) { }
 
-  async create(createShopDto: CreateShopDto): Promise<any> {
-    const shop = new Shop();
-    shop.name = createShopDto.name;
-    shop.shopGroup = createShopDto.shopGroupId;
-    shop.categoryId = createShopDto.categoryId;
-    shop.theme_name = createShopDto.name;
-    shop.active = createShopDto.active;
-    shop.deleted = createShopDto.deleted;
+  async create(createShopUrlDto: CreateShopUrlDto): Promise<any> {
+    const shopUrl = new ShopUrl();
+    shopUrl.shop = createShopUrlDto.shop;
+    shopUrl.domain = createShopUrlDto.domain;
+    shopUrl.domain_ssl = createShopUrlDto.domain_ssl;
+    shopUrl.physical_uri = createShopUrlDto.physical_uri;
+    shopUrl.virtual_uri = createShopUrlDto.virtual_uri;
+    shopUrl.main = createShopUrlDto.main;
+    shopUrl.active = createShopUrlDto.active;
 
-    return this.shopsRepository.save(shop)
+    return this.shopsRepository.save(shopUrl)
       .catch(err => {
 
         let message: string;

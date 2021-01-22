@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToOne } from "typeorm";
 import { Datecolumn } from "../../../database/entities/datecolumn";
-import { ShopGroup } from "./shop_group.entity";
+import { ShopGroup } from "./shop-group.entity";
 
 @Entity()
 export class Shop extends Datecolumn {

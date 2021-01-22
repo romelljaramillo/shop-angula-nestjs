@@ -1,12 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ShopService } from './shop.service';
+import { ShopService } from './services/shop.service';
+import { ShopGroupService } from './services/shop-group.service';
+import { ShopUrlService } from './services/shop-url.service';
 import { ShopController } from './shop.controller';
 import { ShopGroupController } from './shop-group.controller';
 import { ShopUrlController } from './shop-url.controller';
 import { Shop } from './entities/shop.entity';
-import { ShopGroup } from './entities/shop_group.entity';
-import { ShopUrl } from './entities/shop_url.entity';
+import { ShopGroup } from './entities/shop-group.entity';
+import { ShopUrl } from './entities/shop-url.entity';
 
 @Module({
   imports: [
@@ -19,7 +21,15 @@ import { ShopUrl } from './entities/shop_url.entity';
     ShopGroupController, 
     ShopUrlController
   ],
-  providers: [ShopService],
-  exports: [ShopService],
+  providers: [
+    ShopService,
+    ShopGroupService,
+    ShopUrlService,
+  ],
+  exports: [
+    ShopService,
+    ShopGroupService,
+    ShopUrlService,
+  ],
 })
 export class ShopModule {}

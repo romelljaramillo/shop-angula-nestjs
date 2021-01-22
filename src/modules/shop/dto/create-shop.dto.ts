@@ -1,5 +1,5 @@
 import { IsNotEmpty } from "class-validator";
-import { ShopGroup } from "../entities/shop_group.entity";
+import { ShopGroup } from "../entities/shop-group.entity";
 
 export class CreateShopDto {
     @IsNotEmpty()

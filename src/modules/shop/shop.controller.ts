@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { ModuleController } from '../../core/module.controller';
 import { Shop } from './entities/shop.entity';
-import { ShopService } from './shop.service';
+import { ShopService } from './services/shop.service';
 import { CreateShopDto } from './dto/create-shop.dto';
 
 @Controller('shop')
