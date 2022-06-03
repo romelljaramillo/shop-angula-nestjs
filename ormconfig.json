@@ -1,0 +1,21 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": "",
+  "database": "roanja_nestjs",
+  "entityPrefix": "rj_",
+  "autoLoadEntities": true,
+  "synchronize": true,
+  "migrations": [
+    "src/database/migrations/*.ts"
+  ],
+  "entities": [
+    "C:\\wamp64\\www\\roanja\\shop-angula-nestjs\\backend\\dist\\database/../**/*.entity{.ts,.js}"
+  ],
+  "cli": {
+    "migrationsDir": "src/database/migrations"
+  },
+  "logging": "all"
+}

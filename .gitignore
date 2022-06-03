@@ -36,3 +36,6 @@ lerna-debug.log*
 # config
 .env
 orm.config.json
+
+
+/borrar

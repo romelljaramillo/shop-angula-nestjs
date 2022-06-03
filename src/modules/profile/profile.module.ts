@@ -10,6 +10,7 @@ import { ProfileService } from './profile.service';
     TypeOrmModule.forFeature([Profile, ProfileLang])
   ],
   controllers: [ProfileController],
-  providers: [ProfileService]
+  providers: [ProfileService],
+  exports: [ProfileService],
 })
 export class ProfileModule {}

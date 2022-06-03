@@ -2,11 +2,10 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "ty
 import { Profile } from "../../profile/entities/profile.entity";
 import { Lang } from "../../lang/entities/lang.entity";
 import { Datecolumn } from "../../../database/entities/datecolumn";
+import { Exclude } from "class-transformer";
 
 @Entity()
 export class User extends Datecolumn {
-  @PrimaryGeneratedColumn('increment')
-  id: number;
 
   @OneToOne(type => Lang) // specify inverse side as a second parameter
   @JoinColumn()
@@ -22,16 +21,13 @@ export class User extends Datecolumn {
   @Column({ type: 'varchar', length: 100 })
   lastname: string;
 
-  @Column({ type: 'varchar', unique: true, length: 25, nullable: false })
-  username: string;
-
   @Column({ type: 'varchar', length: 100, unique: true, nullable: false })
   email: string;
 
+  @Exclude()
   @Column({ type: 'varchar', nullable: false })
   password: string;
 
-  @Column({ default: true })
+  @Column({ default: false })
   active: boolean;
-
 }

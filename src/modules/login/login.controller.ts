@@ -1,6 +1,10 @@
-import { Controller, Request, Post, UseGuards } from '@nestjs/common';
+import { Controller, Req, Post, UseGuards } from '@nestjs/common';
+import { Request } from 'express';
+import { AuthGuard } from '@nestjs/passport';
+
 import { LocalAuthGuard } from './auth/guards/local-auth.guard';
 import { LoginService } from './login.service';
+import { User } from '../users/entities/user.entity';
 
 @Controller('login')
 export class LoginController {
@@ -8,9 +12,10 @@ export class LoginController {
         private readonly loginService: LoginService,
     ) {}
 
-    @UseGuards(LocalAuthGuard)
+    @UseGuards(AuthGuard('local'))
     @Post()
-    async login(@Request() req) {
-        return this.loginService.login(req.user);
+    async login(@Req() req: Request) {
+        const user = req.user as User;
+        return this.loginService.generateJwt(user);
     }
 }

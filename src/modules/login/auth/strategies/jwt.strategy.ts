@@ -1,23 +1,20 @@
+import { Inject, Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
-import { Injectable } from '@nestjs/common';
+import { JwtPayload } from '../../interfaces/jwt-payload.interface';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
+  constructor(private config: ConfigService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.KEY_COOKIE,
+      secretOrKey: config.get('KEY_COOKIE'),
     });
   }
 
-  async validate(payload: any) {
-    return {
-      id: payload.sub,
-      username: payload.username,
-      firstname: payload.firstname,
-      lastname: payload.lastname
-    };
+  async validate(payload: JwtPayload) {
+    return payload;
   }
 }

@@ -8,8 +8,8 @@ export class ProfileGuard implements CanActivate {
     const handler = context.getHandler();
     const cls = context.getClass();
 
-    console.log(handler);
-    console.log(cls);
+    // console.log(handler);
+    // console.log(cls);
 
     // const request = context.switchToHttp().getRequest();
     // console.log(request.user);
